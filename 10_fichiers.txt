@@ -1,0 +1,271 @@
+10 - Les fichiers
+
+Exercice 10.1
+
+Il lit le fichier exemple
+
+Exercice 10.2
+
+Variable Truc en Caractère
+Variable i en Entier
+Debut
+Ouvrir « Exemple.txt » sur 5 en Lecture
+Tantque Non EOF(5)
+LireFichier 5, Truc
+Pour i ← 1 à Len(Truc)
+Si Mid(Truc, i, 1) = « / » Alors
+Ecrire « »
+Sinon
+Ecrire Mid(Truc, i, 1)
+FinSi
+i Suivant
+FinTantQue
+Fermer 5
+Fin
+
+Exercice 10.3
+
+Variables Nom * 20, Prénom * 20, Tel * 10, Mail * 20, Car en Caractère
+Debut
+Ecrire « Entrez le nom : »
+Lire Nom
+Ecrire « Entrez le prénom : »
+Lire Prénom
+Ecrire « Entrez le numéro de téléphone : »
+Lire Tel
+Ecrire « Entrez l'adresse mail : »
+Lire Mail
+Car ← Nom & Prénom & Tel & Mail
+Ouvrir « Adresse.txt » sur 1 pour Ajout
+EcrireFichier 1, Car
+Fermer 1
+Fin
+
+Exercice 10.4
+
+Structure Bottin
+Nom en Caractère * 20
+Prénom en Caractère * 20
+Tel en Caractère * 10
+Mail en Caractère * 20
+FinStructure
+Tableau Individu() en Bottin
+Variables Personne, Nouveau en Bottin
+Variables i, j en Numérique
+Debut
+Ecrire « Entrez le nom : »
+Lire Nouveau Nom
+Ecrire « Entrez le prénom : »
+Lire Nouveau Prénom
+Ecrire « Entrez le numéro de téléphone : »
+Lire Nouveau Tel
+Ecrire « Entrez l'adresse mail : »
+Lire Nouveau Mail
+Car ← Nom & Prénom & Tel & Mail
+Ouvrir « Adresse.txt » sur 1 pour Lecture
+EcrireFichier 1, Individu(j)
+i ← -1
+inséré ← Faux
+Tantque Non EOF(1)
+i ← i + 1
+Redim Individu(i)
+LireFichier 1, Personne
+Si Personne.Nom > Nouveau.Nom et Non Inséré Alors
+Individu(i) ← Nouveau
+Inséré ← Vrai
+i ← i + 1
+Redim Individu(i)
+FinSi
+Individu(i) ← Personne
+FinTantQue
+Fermer 1
+Si Non Inséré Alors
+i ← i + 1
+Redim Individu(i)
+Individu(i) ← Nouveau
+Inséré ← Vrai
+FinSi
+Ouvrir « Adresse.txt » sur 1 pour Ecriture
+Pour j ← 0 à i
+j Suivant
+Fermer 1
+Fin
+
+Exercice 10.5
+
+Structure Bottin
+Nom en Caractère * 20
+Prénom en Caractère * 20
+Tel en Caractère * 10
+Mail en Caractère * 20
+FinStructure
+Tableau Individu() en Bottin
+Variables Personne en Bottin
+Variables Ancien, Nouveau en Caractère * 20
+Variables i, j en Numérique
+Variable Modifié en Booléen
+Debut
+Ecrire « Entrez le nom à modifier : »
+Lire Ancien
+Ecrire « Entrez le nouveau nom : »
+Lire Nouveau
+Ouvrir « Adresse.txt » sur 1 pour Lecture
+i ← -1
+Modifié ← Faux
+Tantque Non EOF(1)
+i ← i + 1
+Redim Individu(i)
+LireFichier 1, Personne
+Si Personne.Nom = Ancien.Nom Alors
+Modifié ← Vrai
+Personne.Nom ← Nouveau
+FinSi
+Individu(i) ← Personne
+FinTantQue
+Fermer 1
+Ouvrir « Adresse.txt » sur 1 pour Ecriture
+Pour j ← 0 à i
+EcrireFichier 1, Individu(j)
+j Suivant
+Fermer 1
+Si Modifié Alors
+Ecrire « Modification effectuée »
+Sinon
+Ecrire « Nom inconnu. Aucune modification effectuée »
+FinSi
+Fin
+
+Exercice 10.6
+
+Structure Bottin
+Nom en Caractère * 20
+Prénom en Caractère * 20
+Tel en Caractère * 10
+Mail en Caractère * 20
+FinStructure
+Tableau Individu() en Bottin
+Variables Min en Bottin
+Variables i, j en Numérique
+Debut
+Ouvrir « Adresse.txt » sur 1 pour Lecture
+i ← -1
+Modifié ← Faux
+Tantque Non EOF(1)
+i ← i + 1
+Redim Individu(i)
+LireFichier 1, Individu(i)
+FinTantQue
+Fermer 1
+Pour j ← 0 à i - 1
+Min ← Individu(j)
+posmin ← j
+Pour k ← j + 1 à i
+Si Individu(k).Nom < Min.Nom Alors
+Min ← MesPotes(k)
+posmin ← k
+Finsi
+k Suivant
+Individu(posmin) ← Individu(j)
+Individu(j) ← Min
+j Suivant
+Ouvrir « Adresse.txt » sur 1 pour Ecriture
+Pour j ← 0 à i
+EcrireFichier 1, Individu(j)
+j Suivant
+Fermer 1
+Fin
+
+Exercice 10.7
+
+Variable fic en Caractère
+Debut
+Ouvrir « Tutu.txt » sur 1 pour Ajout
+Ouvrir « Toto.txt » sur 2 pour Lecture
+Tantque Non EOF(2)
+LireFichier 2, fic
+EcrireFichier 1, fic
+FinTantQue
+Fermer 2
+Ouvrir « Tata.txt » sur 3 pour Lecture
+Tantque Non EOF(3)
+LireFichier 3, fic
+EcrireFichier 1, fic
+FinTantQue
+Fermer 3
+Fermer 1
+Fin
+
+Exercice 10.8
+
+Structure Bottin
+Nom en Caractère * 20
+Prénom en Caractère * 20
+Tel en Caractère * 10
+Mail en Caractère * 20
+FinStructure
+Tableau Individu() en Bottin
+Variables Personne en Bottin
+Variables i, j en Numérique
+Debut
+Ouvrir « Adresse.txt » sur 1 pour Lecture
+i ← -1
+Tantque Non EOF(1)
+LireFichier 1, MonPote
+n ← 0
+Pour i ← 1 à Len(Personne.Mail)
+Si Mid(Personne.Mail, i, 1) = « @ » Alors
+n ← n + 1
+FinSi
+i suivant
+Si n = 1 Alors
+i ← i + 1
+Redim Individu(i)
+Individu(i) ← MonPote
+FinSi
+FinTantQue
+Fermer 1
+Ouvrir « Adresse.txt » sur 1 pour Ecriture
+Pour j ← 0 à i
+EcrireFichier 1, Individu(j)
+j Suivant
+Fermer 1
+Fin
+
+Exercice 10.9
+
+Structure Vendeur
+Nom en Caractère * 20
+Montant en Numérique
+Fin Structure
+Tableau MesVendeurs() en Vendeur
+Variables NomPrec * 20, Lig, Nom en caractère
+Variables Somme, Vente en Numérique
+Debut
+Ouvrir « Ventes.txt » sur 1 pour Lecture
+i ← -1
+Somme ← 0
+NomPréc ← « »
+Tantque Non EOF(1)
+LireFichier 1, Lig
+Nom ← Mid(Lig, 1, 20)
+Vente ← CNum(Mid(Lig, 21, 10)
+Si Nom = NomPrec Alors
+Somme ← Somme + Vente
+Sinon
+i ← i + 1
+Redim MesVendeurs(i)
+MesVendeurs(i).Nom ← NomPrec
+MesVendeurs(i).Montant ← Somme
+Somme ← 0
+NomPrec ← Nom
+FinSi
+FinTantQue
+i ← i + 1
+Redim MesVendeurs(i)
+MesVendeurs(i).Nom ← NomPrec
+MesVendeurs(i).Montant ← Somme
+Fermer 1
+Pour j ← 0 à i
+Ecrire MesVendeurs(j)
+j suivant
+Fin
